@@ -1,45 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
+import tasks from './sample/tasks.json';
 
-/*const HelloWorld = (props)=>{
-  return (
-    <div id="hello">
-      <h3>{props.subtitle}</h3>
-      {props.message}
-    </div>
-  );
-}*/
+import Tasks from './components/Taks';
 
-class HelloWorld extends React.Component{
+class App extends Component{
 
   state = {
-    show: true
+    tasks : tasks
   }
-
-  toogleShow = () =>{
-    this.setState({show: !this.state.show});
-  }
-
+  
   render(){
-    if(this.state.show){
-      return (
-        <div id="hello">
-          <h3>{this.props.subtitle}</h3>
-          {this.props.message}
-          <button onClick={this.toogleShow}>Toggle show</button>
-        </div>
-      )
-    }else{
-      return <h1>
-        Not elemnts yet
-        <button onClick={this.toogleShow}>ToogleShow</button>
-      </h1>
-    }
+    return <div>
+      <Tasks tasks={this.state.tasks}/>
+    </div>
   }
-
 }
-
-const App = ()=> <div>This is my component: <HelloWorld message="hello world" subtitle="lorem ipsum"/></div>
-
 
 export default App;
